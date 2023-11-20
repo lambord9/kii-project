@@ -1,0 +1,29 @@
+{% extends 'main/base_template.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="text-center" style="margin-top:30px;">
+    <div class="row">
+      <div class="text-center" style="margin-top:30px;">
+        <h2>Последние обновления</h2>
+      </div>
+        <div class="container-fluid">
+          <div class="p-4" >
+            <div class="col-xl">
+              <p class="lead">
+                Концепция этого веб-ресурса заключается в создании единой базы хранении всей информации
+                о средствах защиты информации, имеющихся в отделе, а также в создании удобного объединенного 
+                пространства для их администрирования.</p>
+            </div>
+            <div class="sticky-bottom" >19 Ноября 2023г.</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

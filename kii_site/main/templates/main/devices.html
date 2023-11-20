@@ -1,0 +1,51 @@
+{% extends 'main/base_template.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="text-center" style="margin-top:30px;">
+
+
+        <div class="row">
+            <div class="text-center" style="margin-top:30px;">
+                    <h2>Устройства</h2>
+            </div>
+            <div class="table-responsive-xxl">
+                <table class="table ">
+                    <thead class="table-secondary">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">link</i></th>
+                        <th scope="col">Тип</th>
+                        <th scope="col">Модель</th>
+                        <th scope="col">Имя хоста</th>
+                        <th scope="col">Серийный номер</th>
+                        <th scope="col">Статус</th>
+                        <th scope="col">Адрес площадки</th>
+                        <th scope="col">Тип площадки</th>
+                        <th scope="col">IP-адрес устройства</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for device in all_devices %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td><a href="{% url 'devices' %}{{ forloop.counter }}"><i class="fa-solid fa-arrow-up-right-from-square" style="color: #000000;"></i></a></td>
+                            <td>{{ device.type }}</td>
+                            <td>{{ device.model }}</td>
+                            <td>{{ device.name }}</td>
+                            <td>{{ device.serial }}</td>
+                            <td>{{ device.status }}</td>
+                            <td>{{ device.address }}</td>
+                            <td>{{ device.sitetype }}</td>
+                            <td><a href="{{ device.ip }}">{{ device.ip }}</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+              </div>
+        </div>
+      </div>
+{% endblock %}
