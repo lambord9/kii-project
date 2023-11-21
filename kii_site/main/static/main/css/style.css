@@ -53,9 +53,6 @@ li {
 color: #000000;
 }
 
-.nav-link.active {
-   color: red;
- }
 
  .tooltip {
    position: relative;
@@ -102,11 +99,7 @@ color: #000000;
    border-width: 1em;
    position:relative;
 }
-.sticky-bottom {
-   position:absolute;
-    right:0px;
-    bottom:0px;
-}
+
 
 /* Профиль пользователя*/
 .title-profile {
@@ -127,11 +120,12 @@ color: #000000;
    align-items: center;
 }
 
-figcaption {
-   text-align: center;
-   font-size: 15px;
+/* FOOTER */
+.fa-brands {
+   font-size: 24px;
+   padding-right: 15px;
+   color: #000000;
 }
-
 
 /* GLITCH */
 .glitch-wrapper {
