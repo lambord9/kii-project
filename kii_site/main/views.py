@@ -37,7 +37,9 @@ def login(request):
 def profile(request):
     return render(request, 'main/profile.html')
 
+#def custom_404(request, exception):
+#    return render(request, 'main/custom_404.html')
 def custom_404(request, exception):
-    return HttpResponse(f'Спасибо, мы уже работаем над устранением этой неисправности: {exception}')
+    return HttpResponse('ОЙ')
 
 

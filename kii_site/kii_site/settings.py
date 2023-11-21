@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-z*d@oi+9=f-001^761!u%)f=^^k9w)%a%=-a7ouh49q3^2g(!p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'kii_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'all_apps/templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,7 +69,7 @@ TEMPLATES = [
         },
     },
 ]
-
+print(TEMPLATES[0]['DIRS'])
 WSGI_APPLICATION = 'kii_site.wsgi.application'
 
 
@@ -121,7 +121,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    (BASE_DIR / 'static')
+    BASE_DIR / 'static',
+     BASE_DIR / 'main/static/main/'
 ]
 
 # Default primary key field type
