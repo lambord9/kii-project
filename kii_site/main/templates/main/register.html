@@ -8,18 +8,20 @@
     <div class="text-center" style="margin-top:30px;">
   
   
-          <div class="row">
-              <div class="text-center" style="margin-top:30px;">
-                      <h2>Регистрация нового пользователя</h2>
-              </div>
+        <div class="row">
+            <div class="text-center" style="margin-top:30px;">
+                <h2>Регистрация нового пользователя</h2>
+            </div>
         <form method = "POST" action = "/reg_my_user/">
             {% csrf_token %}
             <p>Логин</p>
-            <input type = "text" name = "userLogin">
+                <input type = "text" name = "userLogin">
             <p>Пароль</p>
-            <input type = "password" name = "userPassword">
-            <br>
-            <br>
-            <input type = "submit" value = "Зарегистрироваться">
+                <input type = "password" name = "userPassword">
+                <br>
+                <br>
+                <input type = "submit" value = "Зарегистрироваться">
         </form>
+    </div>
+</div>    
 {% endblock %}
