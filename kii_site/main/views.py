@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseNotFound
 from .models import Device
 
 dev1 = Device('Fortigate', 'FG-1500D', 'Fortigate-01', 'serial111', 'Active', 'г. Новосибирск, ул. Ленина, д.1', 'Узел ИБ', 'https://10.1.1.1')
@@ -37,9 +38,7 @@ def login(request):
 def profile(request):
     return render(request, 'main/profile.html')
 
-#def custom_404(request, exception):
-#    return render(request, 'main/custom_404.html')
 def custom_404(request, exception):
-    return HttpResponse('ОЙ')
+    return render(request, 'all_apps/404.html', status=404)
 
 

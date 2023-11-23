@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'bootstrap5',
-    'livereload',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +56,7 @@ ROOT_URLCONF = 'kii_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'all_apps/templates',],
+        'DIRS': [BASE_DIR/'kii_site/main/templates',BASE_DIR/'kii_site/all_apps/templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,7 +68,7 @@ TEMPLATES = [
         },
     },
 ]
-print(TEMPLATES[0]['DIRS'])
+
 WSGI_APPLICATION = 'kii_site.wsgi.application'
 
 
@@ -121,10 +120,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-     BASE_DIR / 'main/static/main/'
+    BASE_DIR / 'kii_site/static',
+    BASE_DIR / 'kii_site/main/static/',
 ]
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
