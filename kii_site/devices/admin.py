@@ -6,7 +6,7 @@ from .models import *
 @admin.register(Device)
 class DeviceAdmin(admin.ModelAdmin):
     list_display = ['hostname', 'dev_type', 'model', 'status', 'address','mgmt_inband_ip', 'mgmt_loopback_ip', 'ups']
-    list_editable = ['dev_type', 'model', 'status', 'address', 'mgmt_inband_ip', 'mgmt_loopback_ip']
+    list_editable = ['dev_type', 'model', 'status', 'address', 'mgmt_inband_ip', 'mgmt_loopback_ip', 'ups']
     ordering = ['hostname']
 
     list_per_page = 30
@@ -23,6 +23,7 @@ class NodeAdmin(admin.ModelAdmin):
 @admin.register(Address)
 class AddressAdmin(admin.ModelAdmin):
     list_display = ['address','mrf', 'territory_type', 'contacts']
+    
     ordering = ['address']
     list_per_page = 30
     list_filter = ['address', 'mrf', 'territory_type']

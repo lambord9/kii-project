@@ -22,6 +22,8 @@
                         <th>Тип</th>
                         <th>Модель</th>
                         <th>Адрес площадки</th>
+                        <th>МРФ</th>
+                        <th>Cтатус</th>
                         <th>Тип площадки</th>
                         <th>IP-адрес устройства</th>
                       </tr>
@@ -33,8 +35,10 @@
                             <td>{{ device.hostname }}</td>
                             <td>{{ device.get_dev_type_display }}</td>
                             <td>{{ device.model }}</td>
-                            <td>{{ device.address }}</td>
-                            <td>{{ device.territory_type }}</td>
+                            <td>{{ device.address.address }}</td>
+                            <td>{{ device.address.mrf }}</td>
+                            <td>{{ device.get_status_display }}</td>
+                            <td>{{ device.address.territory_type }}</td>
                             <td><a href="{{ device.mgmt_inband_ip }}">{{ device.mgmt_inband_ip }}</a></td>
                         </tr>
                     {% endfor %}
