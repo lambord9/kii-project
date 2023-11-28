@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-z*d@oi+9=f-001^761!u%)f=^^k9w)%a%=-a7ouh49q3^2g(!p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'devices',
     'bootstrap5',
 ]
 
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'kii_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'kii_site/main/templates',BASE_DIR/'kii_site/all_apps/templates',],
+        'DIRS': [BASE_DIR/'main/templates',BASE_DIR/'kii_site/all_apps/templates',BASE_DIR/'devices/templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,7 +122,7 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'kii_site/static',
-    BASE_DIR / 'kii_site/main/static/',
+    BASE_DIR / 'main/static/',
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

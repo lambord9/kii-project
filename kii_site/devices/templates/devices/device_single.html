@@ -1,0 +1,43 @@
+{% extends 'main/base_template.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="text-center" style="margin-top:30px;">
+
+
+        <div class="row">
+            <div class="text-center" style="margin-top:30px;">
+                    <h2>Подробнее о кластере {{ device.hostname }}</h2>
+            </div>
+            </div>
+        </div>
+        <p>Тип устройства: <strong>{{ device.get_dev_type_display }}</strong></p>
+        <p>Модель устройства: <strong>{{ device.model }}</strong></p>
+        <p>Имя хоста: <strong>{{ device.hostname }}</strong></p>
+        <p>Статус устройства: <strong>{{ device.get_status_display }}</strong></p>
+        <p>Адрес площадки расположения: <strong>{{ device.address.address }}</strong></p>
+        <p>Тип площадки: <strong>{{ device.address.territory_type }}</strong></p>
+        <p>Management ip-адрес  устройства: <strong><a href="{{ device.mgmt_inband_ip }}">{{ device.mgmt_inband_ip }}</a></strong></p>
+        <p>Loopback ip-адрес  устройства: <strong><a href="{{ device.mgmt_loopback_ip }}">{{ device.mgmt_loopback_ip }}</a></strong></p>
+        <p>Контакты на площадке: <strong>{{ device.contacts }}</strong></p>
+        <p> 
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Переключить оба элемента</button>
+        </p>
+        <div class="row">
+          {% for node in device.node_set.all %}
+          <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+              <div class="card card-body">
+                <p>{{ node.node }}</p>
+                <p>{{ node.serial }}</p>
+                <p>{{ node.mgmt_ooband_ip }}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+{% endblock %}
