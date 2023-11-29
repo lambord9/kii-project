@@ -14,16 +14,17 @@
             </div>
             </div>
         </div>
+        <p>Имя хоста: <strong>{{ device.hostname }}</strong></p>
         <p>Тип устройства: <strong>{{ device.get_dev_type_display }}</strong></p>
         <p>Модель устройства: <strong>{{ device.model }}</strong></p>
-        <p>Имя хоста: <strong>{{ device.hostname }}</strong></p>
+        <p>Версия ПО: <strong>{{ device.firmware.firmware }} {{ device.firmware.build }}</strong></p>
         <p>Статус устройства: <strong>{{ device.get_status_display }}</strong></p>
         <p>Адрес площадки расположения: <strong>{{ device.address.address }}</strong></p>
         <p>Тип площадки: <strong>{{ device.address.territory_type }}</strong></p>
         <p>Management ip-адрес  устройства: <strong><a href="{{ device.mgmt_inband_ip }}">{{ device.mgmt_inband_ip }}</a></strong></p>
         <p>Loopback ip-адрес  устройства: <strong><a href="{{ device.mgmt_loopback_ip }}">{{ device.mgmt_loopback_ip }}</a></strong></p>
         <p>Контакты на площадке: <strong>{{ device.address.contacts }}</strong></p>
-        <p>ИБП на площадке: <strong>{{ device.ups }}</strong></p>
+        
         <p> 
           <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Информация о нодах</button>
         </p>
@@ -35,6 +36,7 @@
                 <p>Нода <strong>{{ node.node }}</strong></p>
                 <p>Серийный номер <strong>{{ node.serial }}</strong></p>
                 <p>ip-адрес OOB <strong><a href="{{ node.mgmt_ooband_ip }}">{{ node.mgmt_ooband_ip }}</a></strong></p>
+                <p>ИБП: <strong>{{ node.ups }}</strong></p>
               </div>
             </div>
           </div>

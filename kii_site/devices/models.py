@@ -16,20 +16,27 @@ class Device(models.Model):
     ]
 
     DEV_TYPE_CHOISES = [
-        ('F', 'Fortigate'),
+        ('FG', 'FortiGate'),
+        ('FSW', 'FortiSWitch'),
+        ('FAU', 'FortiAuthenticator'),
+        ('FAZ', 'FortiAnalyzer'),
+        ('FMG', 'FortiManager'),
+        ('NG', 'NGate'),
+        ('TS', 'TufinServer'),
+        ('TC', 'TufinCollector'),
         ('К', 'Континент'),
-        ('T', 'Tufin'),
+        ('КЦ', 'Континент (ЦУС)'),
     ]
 
-
+    dev_type = models.CharField(max_length=5, choices=DEV_TYPE_CHOISES, null=True)
+    model = models.CharField(max_length=10, null=True, blank=True)
     hostname = models.CharField(max_length=15)
-    dev_type = models.CharField(max_length=20, choices=DEV_TYPE_CHOISES)
-    model = models.CharField(max_length=15)
     status = models.CharField(max_length=1, choices=STATUS_CHOISES)
-    address = models.ForeignKey('Address', on_delete=models.CASCADE, null=True)
     mgmt_inband_ip = models.CharField(max_length=25, null=True)
     mgmt_loopback_ip = models.CharField(max_length=25, null=True)
-    ups = models.CharField(max_length=200, default='Имеется')
+    address = models.ForeignKey('Address', on_delete=models.CASCADE, null=True)
+    firmware = models.ForeignKey('Firmware', on_delete=models.CASCADE, null=True, blank=True)
+    domains = models.ManyToManyField('Domain')
 
     def get_url(self):
         return reverse('device_single', args=[self.id])
@@ -41,12 +48,13 @@ class Device(models.Model):
         return f'{self.id}- {self.hostname}'
     
 class Node(models.Model):
+
     hostname = models.ForeignKey(Device, on_delete=models.CASCADE, null=True)
     node = models.CharField(max_length=15)
-    firmware = models.CharField(max_length=15, default='6.4')
     serial = models.CharField(max_length=30)
     support_date = models.DateField()
     mgmt_ooband_ip = models.CharField(max_length=25, null=True)
+    ups = models.CharField(max_length=200, default='Имеется')
 
 class Address(models.Model):
     SZ = 'SZ'
@@ -72,8 +80,23 @@ class Address(models.Model):
     contacts = models.CharField(max_length=200)
 
     def __str__(self):
-        return f'{self.address} - {self.territory_type}'
+        return f'{self.address}'
+    
 
+class Domain(models.Model):
+
+    domain = models.CharField(max_length=7, default=None, null=True)
+
+    def __str__(self):
+        return f'{self.domain}'
+
+class Firmware(models.Model):
+
+    firmware = models.CharField(max_length=15, default='6.4')
+    build = models.CharField(max_length=15, default='2060')
+
+    def __str__(self):
+        return f'{self.firmware} build{self.build}'
 
 
 
