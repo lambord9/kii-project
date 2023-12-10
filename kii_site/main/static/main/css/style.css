@@ -24,6 +24,7 @@ aside{  /* стиль боковой панели навигации */
    padding: 1%; /*отступы */
    height: 100vh; /* высота боковой панели - 100% от видимой высоты экрана*/
    color: white; /* цвет текста */
+   min-width: 55px;
 }
 
 aside a{
@@ -133,6 +134,14 @@ color: #000000;
    font-size: 24px;
    padding-right: 15px;
    color: #000000;
+}
+
+.footer {
+   background-color: #E0E1DD;
+   position: relative;
+   height: 100%;
+
+   padding: 6px 12px;
 }
 
 /* GLITCH */

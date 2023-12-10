@@ -6,25 +6,23 @@
 {% block content %}
 <div class="row">
   <div class="text-center" style="margin-top:30px;">
-
-        <div class="row">
-            <div class="text-center" style="margin-top:30px;">
-                    <h2>Устройства</h2>
+      <h2>Устройства</h2>
             <div class="col-md-3 mb-3">
               <input class="form-control" id="myInput" type="text" placeholder="Очень быстрый фильтр">
             </div>
             <div class="table-responsive-xxl">
-                <table class="table" id="myTable">
+                <table class="table table-hover" id="myTable">
                     <thead class="table-secondary"  >
                       <tr>
                         <th scope="col">link</i></th>
                         <th onclick="sortTable(1)" style = "cursor: pointer;">Имя хоста</th>
                         <th>Тип</th>
                         <th>Модель</th>
+                        <th>Cтатус</th>
                         <th>Адрес площадки</th>
                         <th>МРФ</th>
-                        <th>Cтатус</th>
                         <th>Тип площадки</th>
+                        <th>Домены</th>
                         <th>IP-адрес устройства</th>
                       </tr>
                     </thead>
@@ -35,10 +33,14 @@
                             <td>{{ device.hostname }}</td>
                             <td>{{ device.get_dev_type_display }}</td>
                             <td>{{ device.model }}</td>
-                            <td>{{ device.address.address }}</td>
-                            <td>{{ device.address.mrf }}</td>
                             <td>{{ device.get_status_display }}</td>
+                            <td>{{ device.address.address }}</td>
+                            <td>{{ device.address.get_mrf_display }}</td>
                             <td>{{ device.address.territory_type }}</td>
+                            <td>{% for d in device.domains.all %} 
+                              {{ d }}
+                              {% endfor %}
+                            </td>
                             <td><a href="{{ device.mgmt_inband_ip }}">{{ device.mgmt_inband_ip }}</a></td>
                         </tr>
                     {% endfor %}

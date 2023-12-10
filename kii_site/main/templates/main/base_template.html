@@ -6,9 +6,16 @@
     <meta charset="UTF-8">
     <title> {% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
     <script src="https://kit.fontawesome.com/a97047fead.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- SEMANTIC UI -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js">
+    <!-- CHART JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     {% bootstrap_css %}
     {% bootstrap_javascript %}
@@ -29,16 +36,17 @@
                         </div>
                     
                         {% block content %}
-                                
+                            {% block scripts %}
+                            {% endblock %} 
                         {% endblock %}
                     </div>
-
+                    
             </div>      
         </div>
         
         <!-- POPPER-->
-    <div class="row" style="background-color: #E0E1DD;">    
-        <div class="h-auto col-12" >
+    <div class="footer">    
+        <div class="h-auto col-12"  >
             {% include 'main/footer.html' %}   
         </div>  
     </div>

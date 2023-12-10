@@ -9,8 +9,6 @@ def index(request):
 
 def get_device(request, id:int):
     device = get_object_or_404(Device, id=id)
-
-
     context = {
         'title': 'Портал КИИ - Подробнее об устройстве', 
         'device': device,        

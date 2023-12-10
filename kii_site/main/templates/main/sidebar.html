@@ -15,7 +15,7 @@
           </a>
         </li>
         <li>
-          <a href="#" class="nav-link link-body-emphasis">
+          <a href="{% url 'panel_index' %}" {% if request.path|slice:"7"  == '/panel/' %} class="nav-link active" aria-current="page" {% else %} class="nav-link link-body-emphasis" {% endif %}>
             <i class="fa-solid fa-chart-area" style="color: #000000;" data-bs-toggle="tooltip" data-bs-placement="right" title="Панель"></i>
             <div class="d-none d-lg-inline-block " width="16" height="16">Панель управления</div>
           </a>

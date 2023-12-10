@@ -1,0 +1,51 @@
+{% extends 'main/base_template.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="text-center" style="margin-top:30px;">
+    <h2>Панель управления</h2>
+      <div class="col-md-3 mb-3">
+        <canvas id="Domains"></canvas>
+          {% block scripts %}
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          
+          <!-- Распределение площадок по доменам КИИ -->
+          <script>
+            const ctx = document.getElementById('Domains');
+          
+            new Chart(ctx, {
+              type: 'pie',
+              data: {
+                labels: [{% for item in qs %}'{{ item }}',{% endfor %}],
+                datasets: [{
+                  label: 'Количество площадок',
+                  data: [{% for item in qs %}'{{ item.device__count }}',{% endfor %}],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                plugins: {
+                  title: {
+                    display: true,
+                    text: 'Распределение площадок по доменам КИИ',
+                    padding: {
+                      top: 10,
+                      bottom: 30
+                    }
+                  }
+                }
+              }
+            });
+          </script>
+          <!-- Тут другой график -->
+          {% endblock %}
+        </div>
+            
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

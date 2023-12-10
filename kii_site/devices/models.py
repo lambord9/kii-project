@@ -92,7 +92,7 @@ class Domain(models.Model):
 
 class Firmware(models.Model):
 
-    firmware = models.CharField(max_length=15, default='6.4')
+    firmware = models.CharField(max_length=15, default='6.4.13')
     build = models.CharField(max_length=15, default='2060')
 
     def __str__(self):
