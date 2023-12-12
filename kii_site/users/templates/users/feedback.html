@@ -1,0 +1,29 @@
+{% extends 'main/base_template.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% load crispy_forms_tags %}
+{% block title %} Портал КИИ - Страница обратной связи {% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card shadow-sm">
+            <div class="card-header">
+            <h2 class="card-title text-center">Форма обратной связи</h2>
+            </div>
+            <form method="POST">
+            {% csrf_token %}
+            <div class="card-body">
+                {{ form|crispy }}
+            </div>
+            <div class="card-footer">
+                <input type="submit" value="Отправить" class="btn btn-primary">
+            </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

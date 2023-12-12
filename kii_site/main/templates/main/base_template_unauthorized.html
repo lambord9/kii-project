@@ -1,0 +1,30 @@
+{% load static %}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+    <script src="https://kit.fontawesome.com/a97047fead.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- SEMANTIC UI -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js">
+    <!-- CHART JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% block head %}{% endblock %}
+</head>
+<body>
+
+    {% block content %}
+        {% block script %}
+        {% endblock %} 
+    {% endblock %}
+                    
+</body>
+</html>

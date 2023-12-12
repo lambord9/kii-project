@@ -8,6 +8,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name = 'devices_index'),
-    path('<int:id>', views.get_device, name = 'device_single'),
+    path('<int:pk>', views.DeviceDetailView.as_view(), name = 'device_single'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

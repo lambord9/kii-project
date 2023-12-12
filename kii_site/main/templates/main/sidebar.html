@@ -4,42 +4,44 @@
 {% bootstrap_javascript %}
 
 <aside>
-  
-    <hr style="background-color: #000000;">  
-
-      <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-          <a href="{% url 'home' %}" {% if request.path  == '/' %} class="nav-link active" aria-current="page" {% else %} class="nav-link link-body-emphasis" {% endif %}>
-            <i class="fa-solid fa-house-chimney" style="color: #000000;" data-bs-toggle="tooltip" data-bs-placement="right" title="Главная страница"></i>
-            <div class="d-none d-lg-inline-block" width="16" height="16">Главная страница</div>
-          </a>
-        </li>
-        <li>
-          <a href="{% url 'panel_index' %}" {% if request.path|slice:"7"  == '/panel/' %} class="nav-link active" aria-current="page" {% else %} class="nav-link link-body-emphasis" {% endif %}>
-            <i class="fa-solid fa-chart-area" style="color: #000000;" data-bs-toggle="tooltip" data-bs-placement="right" title="Панель"></i>
-            <div class="d-none d-lg-inline-block " width="16" height="16">Панель управления</div>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="nav-link link-body-emphasis">
-            <i class="fa-solid fa-circle-exclamation" style="color: #000000;" data-bs-toggle="tooltip" data-bs-placement="right" title="Инциденты"></i>
-            <div class="d-none d-lg-inline-block" width="16" height="16">Инциденты</div>
-          </a>
-        </li>
-        <li>
-          <a href="{% url 'devices_index' %}" {% if request.path|slice:"9"  == '/devices/' %} class="nav-link active" aria-current="page" {% else %} class="nav-link link-body-emphasis" {% endif %}>
-            <i class="fa-solid fa-server" style="color: #000000;" data-bs-toggle="tooltip" data-bs-placement="right" title="Устройства"></i>
-            <div class="d-none d-lg-inline-block" width="16" height="16">Устройства</div>
-            
-          </a>
-        </li>
-        <li>
-          <a href="#" class="nav-link link-body-emphasis">
-            <i class="fa-solid fa-screwdriver-wrench" style="color: #000000;" data-bs-toggle="tooltip" data-bs-placement="right" title="Инструменты"></i>
-            <div class="d-none d-lg-inline-block" width="16" height="16">Инструменты</div>
-          </a>
-        </li>
-      </ul>
-      <hr style="background-color: #000000;">
-      
+  <hr style="background-color: #000000;">  
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="{% url 'home' %}" {% if request.path  == '/' %} class="nav-link active" aria-current="page" {% else %} class="nav-link link-body-emphasis" {% endif %}>
+          <i class="fa-solid fa-house-chimney" style="color: #000000;" data-bs-toggle="tooltip" data-bs-placement="right" title="Главная страница"></i>
+          <div class="d-none d-lg-inline-block" width="16" height="16">Главная страница</div>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'panel_index' %}" {% if request.path|slice:"7"  == '/panel/' %} class="nav-link active" aria-current="page" {% else %} class="nav-link link-body-emphasis" {% endif %}>
+          <i class="fa-solid fa-chart-area" style="color: #000000;" data-bs-toggle="tooltip" data-bs-placement="right" title="Панель"></i>
+          <div class="d-none d-lg-inline-block " width="16" height="16">Панель управления</div>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-body-emphasis">
+          <i class="fa-solid fa-circle-exclamation" style="color: #000000;" data-bs-toggle="tooltip" data-bs-placement="right" title="Инциденты"></i>
+          <div class="d-none d-lg-inline-block" width="16" height="16">Инциденты</div>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'devices_index' %}" {% if request.path|slice:"9"  == '/devices/' %} class="nav-link active" aria-current="page" {% else %} class="nav-link link-body-emphasis" {% endif %}>
+          <i class="fa-solid fa-server" style="color: #000000;" data-bs-toggle="tooltip" data-bs-placement="right" title="Устройства"></i>
+          <div class="d-none d-lg-inline-block" width="16" height="16">Устройства</div>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-body-emphasis">
+          <i class="fa-solid fa-screwdriver-wrench" style="color: #000000;" data-bs-toggle="tooltip" data-bs-placement="right" title="Инструменты"></i>
+          <div class="d-none d-lg-inline-block" width="16" height="16">Инструменты</div>
+        </a>
+      </li>
+    <hr style="background-color: #000000;">
+      <li>
+        <a href="{% url 'feedback' %}" {% if request.path|slice:"16"  == '/users/feedback/' %} class="nav-link active" aria-current="page" {% else %} class="nav-link link-body-emphasis" {% endif %}>
+          <i class="fa-solid fa-comment-dots" style="color: #000000;" data-bs-toggle="tooltip" data-bs-placement="right" title="Обратная связь"></i>
+          <div class="d-none d-lg-inline-block" width="16" height="16">Обратная связь</div>
+        </a>
+      </li>
+    </ul>
   </aside>

@@ -1,25 +1,21 @@
 from typing import Any
 from django.shortcuts import render, HttpResponse
 from devices.models import *
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-# def index(request): 
-#     count_domains = Domain.objects.annotate(Count('device'))
-#     print(count_domains)
-#     domains = {}
-#     for d in count_domains:
-#         domains[d]= d.device__count
-
-#     context = {'title': 'Портал КИИ - Панель управления', 'domains': domains}
-#     print(context)
-#     return render(request, 'panel/panel.html', context)
-
-class DomainsChartView(TemplateView):
+class DomainsChartView(LoginRequiredMixin, TemplateView):
+    login_url='/users/login'
     template_name = 'panel/panel.html'
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["qs"] = Domain.objects.annotate(Count('device'))
+        return context
+    
+class DomainsByMRFChartView(TemplateView):
+    template_name = 'panel/panel.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["qs"] = Domain.objects.annotate(Count('device', filter=Q(Address.MRF_CHOISES == 'SI')))
         return context

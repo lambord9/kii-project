@@ -10,7 +10,19 @@ body {
 }
 .p-2 {
    background-color: #E0E1DD;
+   
 }
+
+.center-img {
+   display: block;
+   margin: 0 auto;
+ }
+
+ .center-btn {
+   display: block;
+   margin: 0 auto;
+ }
+
 form {
    display: block;
    margin-top: 0em;

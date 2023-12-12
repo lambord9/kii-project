@@ -5,8 +5,8 @@ from .models import *
 # Register your models here.
 @admin.register(Device)
 class DeviceAdmin(admin.ModelAdmin):
-    list_display = ['hostname',  'dev_type', 'model', 'firmware', 'status', 'address','mgmt_inband_ip', 'mgmt_loopback_ip']
-    list_editable = ['dev_type', 'model', 'status', 'firmware', 'address', 'mgmt_inband_ip', 'mgmt_loopback_ip']
+    list_display = ['hostname',  'dev_type', 'model', 'firmware', 'status', 'address','mgmt_inband_ip', 'mgmt_loopback_ip', 'get_domains']
+    list_editable = ['dev_type', 'model', 'status', 'firmware', 'address', 'mgmt_inband_ip', 'mgmt_loopback_ip', ]
     ordering = ['hostname']
     #filter_horizontal = ['domains']
     list_per_page = 30

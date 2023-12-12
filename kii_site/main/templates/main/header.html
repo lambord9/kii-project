@@ -4,33 +4,35 @@
 {% bootstrap_javascript %}
 
 
-    <header class="navbar navbar-expand-lg p-2 text-bg-dark">
-        <div class="container-fluid">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center justify-content-center mb-2 mb-lg-0 text-bg-dark text-decoration-none " >
-                <img src="{% static 'main\images\logo.png' %}" alt="logo" style="width: 50px; height: auto; display: flex;"><use xlink:href="index.html"></use></img>
-                <div class="glitch" data-glitch="Портал КИИ">Портал КИИ</div>
-            </a>
+<header class="navbar navbar-expand-lg p-2 text-bg-dark">
+  <div class="container-fluid m-0 p-0">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center justify-content-center mb-2 mb-lg-0 text-bg-dark text-decoration-none " >
+      <img src="{% static 'main\images\logo.png' %}" alt="logo" style="width: 50px; height: auto; display: flex;"><use xlink:href="index.html"></use></img>
+        <div class="glitch" data-glitch="Портал КИИ">Портал КИИ</div>
+      </a>
     
-            <form class="d-flex" role="search" style="min-width: 100px; padding: 10px;">
-              <input type="search me-2" class="form-control form-control-dark text-bg-dark" placeholder="Поиск..." aria-label="Search">
-            </form>
+    <form class="d-flex flex-wrap " role="search" style="min-width: 100px; padding: 10px;">
+      <input type="search me-2" class="form-control form-control-dark text-bg-dark" placeholder="Поиск..." aria-label="Search">
+    </form>
+  </div>
 
-            </div>
-            <div class="dropdown align-items-center justify-content-center justify-content-lg-start" style="min-width: 200px; padding: 10px;">
-                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="https://avatars.githubusercontent.com/u/52909868?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
-                  <strong>User</strong>
-                </a>
-                <ul class="dropdown-menu text-small shadow">
-                  <li><a class="dropdown-item" href="{% url 'login' %}" >Войти</a></li>
-                  <li><a class="dropdown-item" href="{% url 'register' %}">Зарегистрироваться</a></li>
-                  <li><a class="dropdown-item" href="{% url 'profile' %}">Профиль</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Выйти</a></li>
-                </ul>
-              </div>
-          </div>
-        </div>
-        
-    </header>
+  {% if request.user.id %}
+  <div class="dropdown align-items-center justify-content-center justify-content-lg-start" style="min-width: 200px; padding: 10px;">
+    <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="{{ request.user.account.account_image.url }}" alt="" width="32" height="32" class="rounded-circle me-2">
+      <strong>{{ request.user.username }}</strong>
+    </a>
+      <ul class="dropdown-menu text-small shadow">
+        <li><a class="dropdown-item" href="#">Профиль</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="{% url 'logout' %}">Выйти</a></li>
+      </ul>
+  </div>
+  {% else %} 
+  <div class="text-end">
+    <button type="button" class="btn btn-outline-light me-2"><a href = "{% url 'login' %}" style="text-decoration: none; color: #000000;">Вход</a></button>
+    <button type="button" class="btn btn-warning"><a href = "{% url 'register' %}" style="text-decoration: none; color: #000000;">Регистрация</a></button>
+  </div>      
+  {% endif %}
+</header>

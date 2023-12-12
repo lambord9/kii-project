@@ -1,0 +1,31 @@
+{% extends 'main/base_template_unauthorized.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% load crispy_forms_tags %}
+{% block title %} Портал КИИ - Регистрация {% endblock %}
+
+{% block content %}
+<div class="container">
+  <img src="{% static 'main\images\logo.png' %}" alt="logo" style="width: 50px; height: auto; display: flex;" class="center-img" />
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+        <div class="card shadow-sm">
+            <div class="card-header">
+            <h5 class="card-title text-center">Регистрация нового пользователя</h5>
+            </div>
+            <form method="POST">
+            {% csrf_token %}
+            <div class="card-body">
+                {{ form|crispy }}
+            </div>
+            <small class="text-muted" style="margin: 0 auto; margin: 16px;">Уже есть аккаунт? <a class="ml-2" href="{% url 'login' %}">Войти</a></small>
+            <div class="card-footer">
+                <input type="submit" value="Зарегистрироваться" class="btn btn-primary" style="margin: 0 auto; display: block;">
+            </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

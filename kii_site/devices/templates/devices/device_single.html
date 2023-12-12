@@ -1,41 +1,77 @@
 {% extends 'main/base_template.html' %}
 {% load static %}
 {% load bootstrap5 %}
-{% block title %} {{ title }} {% endblock %}
+{% block title %} Портал КИИ - Подробнее об устройстве {% endblock %}
 
 {% block content %}
-<div class="row">
-  <div class="text-center" style="margin-top:30px;">
-    <h2>Подробнее о кластере {{ device.hostname }}</h2>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card shadow-sm">
+            <div class="card-header">
+              <h4 class="card-title text-center">Подробнее о кластере {{ device.hostname }}</h4>
             </div>
-            </div>
-        </div>
-        <p>Имя хоста: <strong>{{ device.hostname }}</strong></p>
-        <p>Тип устройства: <strong>{{ device.get_dev_type_display }}</strong></p>
-        <p>Модель устройства: <strong>{{ device.model }}</strong></p>
-        <p>Версия ПО: <strong>{{ device.firmware.firmware }} build{{ device.firmware.build }}</strong></p>
-        <p>Статус устройства: <strong>{{ device.get_status_display }}</strong></p>
-        <p>Адрес площадки расположения: <strong>{{ device.address.address }}</strong></p>
-        <p>Тип площадки: <strong>{{ device.address.territory_type }}</strong></p>
-        <p>Management ip-адрес  устройства: <strong><a href="{{ device.mgmt_inband_ip }}">{{ device.mgmt_inband_ip }}</a></strong></p>
-        <p>Loopback ip-адрес  устройства: <strong><a href="{{ device.mgmt_loopback_ip }}">{{ device.mgmt_loopback_ip }}</a></strong></p>
-        <p>Контакты на площадке: <strong>{{ device.address.contacts }}</strong></p>
-        <p> 
-          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Информация о нодах</button>
-        </p>
-        <div class="row">
-          {% for node in device.node_set.all %}
-          <div class="col">
-            <div class="collapse multi-collapse" id="multiCollapseExample1">
-              <div class="card card-body">
-                <p>Нода <strong>{{ node.node }}</strong></p>
-                <p>Серийный номер <strong>{{ node.serial }}</strong></p>
-                <p>ip-адрес OOB <strong><a href="{{ node.mgmt_ooband_ip }}">{{ node.mgmt_ooband_ip }}</a></strong></p>
-                <p>ИБП: <strong>{{ node.ups }}</strong></p>
+            <div class="card-body">
+              <p class="mb-1">Имя хоста: <strong>{{ device.hostname }}</strong></p>
+              <p class="mb-1">Тип устройства: <strong>{{ device.get_dev_type_display }}</strong></p>
+              <p class="mb-1">Модель устройства: <strong>{{ device.model }}</strong></p>
+              <p class="mb-1">Версия ПО: <strong>{{ device.firmware.firmware }} build{{ device.firmware.build }}</strong></p>
+              <p class="mb-1">Статус устройства: <strong>{{ device.get_status_display }}</strong></p>
+              <hr>
+              <p class="mb-1">Адрес площадки расположения: <strong>{{ device.address.address }}</strong></p>
+              <p class="mb-1">Тип площадки: <strong>{{ device.address.territory_type }}</strong></p>
+              <p class="mb-1">Management ip-адрес  устройства: <strong><a href="{{ device.mgmt_inband_ip }}">{{ device.mgmt_inband_ip }}</a></strong></p>
+              <p class="mb-1">Loopback ip-адрес  устройства: <strong><a href="{{ device.mgmt_loopback_ip }}">{{ device.mgmt_loopback_ip }}</a></strong></p>
+              <p class="mb-1">Контакты на площадке: <strong>{{ device.address.contacts }}</strong></p>
+              <br>
+              <p> 
+                <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" >Информация о нодах</button>
+              </p>
+              <div class="row">
+                {% for node in device.node_set.all %}
+                  <div class="col">
+                    <div class="collapse multi-collapse" id="multiCollapseExample1" >
+                      <div class="card card-body">
+                        <p class="mb-1">Нода <strong>{{ node.node }}</strong></p>
+                        <p class="mb-1">Серийный номер <strong>{{ node.serial }}</strong></p>
+                        <p class="mb-1">ip-адрес OOB <strong><a href="{{ node.mgmt_ooband_ip }}">{{ node.mgmt_ooband_ip }}</a></strong></p>
+                        <p class="mb-1">ИБП: <strong>{{ node.ups }}</strong></p> 
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
               </div>
+              {% block script %}
+              <script>
+              const button = document.querySelector(".btn-light");
+
+              // Добавить слушатель события onclick к кнопке
+              button.addEventListener("click", function() {
+                // Получить все элементы блока
+                const collapses = document.querySelectorAll(".multi-collapse");
+
+                // Перебрать все элементы блока
+                for (const collapse of collapses) {
+                  // Установить свойство display блока на противоположное текущему состоянию
+                  collapse.style.display = collapse.style.display === "block" ? "none" : "block";
+
+                  // Установить свойства transition для блока
+                  collapse.style.transition = "all 1s ease-in-out";
+                }
+              });
+              </script>
+              {% endblock %}
             </div>
+            <div class="card-footer"></div>
+            </div>                
           </div>
-          {% endfor %}
         </div>
+        {% endblock %}
       </div>
-{% endblock %}
+    </div>
+  </div>
+  
+
+
+
+

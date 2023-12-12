@@ -43,6 +43,9 @@ class Device(models.Model):
     
     def get_model_fields(self):
         return self._meta.fields
+    #Возвращает домены для отобрадения в админке (ManyToMany в классическом варианте не отображается)
+    def get_domains(self):
+        return ",".join([str(p) for p in self.domains.all()])
 
     def __str__(self):
         return f'{self.id}- {self.hostname}'

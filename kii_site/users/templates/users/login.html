@@ -1,0 +1,35 @@
+{% extends 'main/base_template_unauthorized.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% load crispy_forms_tags %}
+{% block title %} Портал КИИ - Вход {% endblock %}
+
+{% block content %}
+  <div class="container">
+    <img src="{% static 'main\images\logo.png' %}" alt="logo" style="width: 50px; height: auto; display: flex;" class="center-img" />
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto">
+        <div class="card shadow-sm" >
+            <div class="card-header">
+            <h5 class="card-title text-center">Вход</h5>
+            </div>
+            <form method="POST">
+            {% csrf_token %}
+            <div class="card-body">
+                {{ form|crispy }}
+            </div>
+              <small class="text-muted" style="margin: 16px;">Нет аккаунта? <a class="ml-2" href="{% url 'register' %}">Зарегистрироваться</a></small>
+              <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target=".collapse" aria-expanded="false" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; font-size: 0.7rem;">Подсказка</button>
+              <div class="collapse" id="m1" >
+                <small class="text-muted" style="margin: 16px;">admin / 123 </small>
+              </div>
+            <div class="card-footer">
+                <input type="submit" value="Войти" class="btn btn-primary" style="margin: 0 auto; display: block;" >
+            </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
