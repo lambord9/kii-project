@@ -12,9 +12,22 @@
             <h4 class="card-title text-center">Панель управления</h4>
         </div>
         <div class="card-body"></div>
-        <div class="col-md-3">
-          <canvas id="Domains"></canvas>
-        </div>          
+        <div class="row">
+          <div class="col-md-3">
+            <canvas id="device_count_by_domain"></canvas>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <canvas id="device_count_by_domain_vl"></canvas>
+          </div>
+          <div class="col-md-2">
+            <canvas id="device_count_by_domain_si"></canvas>
+          </div> 
+          <div class="col-md-2">
+            
+          </div>
+        </div>             
       </div>
     </div>
   </div>
@@ -23,31 +36,111 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- Распределение площадок по доменам КИИ -->
 <script>
-  const ctx = document.getElementById('Domains');
-  new Chart(ctx, {
+  const device_count_by_domain = document.getElementById('device_count_by_domain');
+  new Chart(device_count_by_domain, {
     type: 'pie',
     data: {
-      labels: [{% for item in qs %}'{{ item }}',{% endfor %}],
+      labels: [{% for item in qs.device_count_by_domain %}'{{ item }}',{% endfor %}],
       datasets: [{
         label: 'Количество площадок',
-        data: [{% for item in qs %}'{{ item.device__count }}',{% endfor %}],
-        borderWidth: 3
+        data: [{% for item in qs.device_count_by_domain %}'{{ item.device__count }}',{% endfor %}],
+        borderWidth: 1
       }]
     },
     options: {
       plugins: {
         title: {
           display: true,
-          text: 'Распределение площадок по доменам КИИ',
+          text: 'Общее распределение площадок по доменам КИИ',
           padding: {
             top: 10,
-            bottom: 30
+            bottom: 5
           }
         }
       }
     }
   });
 </script>
-<!-- Тут другой график -->
+<!-- МРФ Сибирь. Домены КИИ -->
+<script>
+  const device_count_by_domain_si = document.getElementById('device_count_by_domain_si');
+  new Chart(device_count_by_domain_si, {
+    type: 'pie',
+    data: {
+      labels: [{% for item in qs.device_count_by_domain_si %}'{{ item }}',{% endfor %}],
+      datasets: [{
+        label: 'Количество площадок',
+        data: [{% for item in qs.device_count_by_domain_si %}'{{ item.device__count }}',{% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: 'МРФ Сибирь. Домены КИИ',
+          padding: {
+            top: 10,
+            bottom: 5
+          }
+        }
+      }
+    }
+  });
+</script>
+<!-- МРФ Волга. Домены КИИ -->
+<script>
+  const device_count_by_domain_vl = document.getElementById('device_count_by_domain_vl');
+  new Chart(device_count_by_domain_vl, {
+    type: 'pie',
+    data: {
+      labels: [{% for item in qs.device_count_by_domain_vl %}'{{ item }}',{% endfor %}],
+      datasets: [{
+        label: 'Количество площадок',
+        data: [{% for item in qs.device_count_by_domain_vl %}'{{ item.device__count }}',{% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: 'МРФ Центр. Домены КИИ',
+          padding: {
+            top: 10,
+            bottom: 5
+          }
+        }
+      }
+    }
+  });
+</script>
+<!-- МРФ Дальний восток. Домены КИИ -->
+<script>
+  const device_count_by_domain_dv = document.getElementById('device_count_by_domain_dv');
+  new Chart(device_count_by_domain_dv, {
+    type: 'pie',
+    data: {
+      labels: [{% for item in qs.device_count_by_domain_dv %}'{{ item }}',{% endfor %}],
+      datasets: [{
+        label: 'Количество площадок',
+        data: [{% for item in qs.device_count_by_domain_dv %}'{{ item.device__count }}',{% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: 'МРФ Северо-запад. Домены КИИ',
+          padding: {
+            top: 10,
+            bottom: 5
+          }
+        }
+      }
+    }
+  });
+</script>
 {% endblock %}
 {% endblock %}

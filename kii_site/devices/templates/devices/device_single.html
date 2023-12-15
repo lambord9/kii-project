@@ -23,6 +23,8 @@
               <p class="mb-1">Management ip-адрес  устройства: <strong><a href="{{ device.mgmt_inband_ip }}">{{ device.mgmt_inband_ip }}</a></strong></p>
               <p class="mb-1">Loopback ip-адрес  устройства: <strong><a href="{{ device.mgmt_loopback_ip }}">{{ device.mgmt_loopback_ip }}</a></strong></p>
               <p class="mb-1">Контакты на площадке: <strong>{{ device.address.contacts }}</strong></p>
+              <hr>
+              <p class="mb-1">Домены: <strong>{% for d in device.domains.all %} {{ d }} {% endfor %}</strong></p>
               <br>
               <p> 
                 <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" >Информация о нодах</button>

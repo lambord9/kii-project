@@ -77,7 +77,7 @@
     </div>
   </div>
 </div>
-{% block script%}
+{% block script %}
 <!-- jQuerty для быстрого поиска на странице с устройствами -->
 <script>
   $(document).ready(function(){
@@ -147,17 +147,14 @@
 <!-- Анимация "Добавление устройства" -->
 <script>
   const button = document.querySelector(".btn-secondary");
-
   // Добавить слушатель события onclick к кнопке
   button.addEventListener("click", function() {
     // Получить все элементы блока
     const collapses = document.querySelectorAll(".multi-collapse");
-
     // Перебрать все элементы блока
     for (const collapse of collapses) {
       // Установить свойство display блока на противоположное текущему состоянию
       collapse.style.display = collapse.style.display === "block" ? "none" : "block";
-
       // Установить свойства transition для блока
       collapse.style.transition = "all 1s ease-in-out";
     }

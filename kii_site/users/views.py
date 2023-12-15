@@ -41,6 +41,3 @@ def register(request):
 class UserLogoutView(LoginRequiredMixin, LogoutView):
     def get_success_url(self):
         return self.request.META['HTTP_REFERER']
-
-
-
