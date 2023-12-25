@@ -8,6 +8,9 @@ class Account(models.Model):
     department = models.CharField(max_length=250)
     account_image = models.ImageField(default='default.png', 
                                       upload_to='account_images')
+    vk = models.CharField(max_length = 100, null=True)
+    instagram = models.CharField(max_length = 100, null=True)
+    telegram = models.CharField(max_length = 100, null=True)
 
 
     def __str__(self) -> str:

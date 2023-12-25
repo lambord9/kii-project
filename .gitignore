@@ -3,3 +3,5 @@
 /1.py
 venv/
 .db
+*.env
+*.json
