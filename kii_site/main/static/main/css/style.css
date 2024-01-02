@@ -12,7 +12,11 @@ body {
    background-color: #E0E1DD;
    
 }
-
+/* crispy form на странице devices*/ 
+.col-md-2 .card {
+   max-width: 100px;
+   font-size: 0.3em;
+}
 .center-img {
    display: block;
    margin: 0 auto;

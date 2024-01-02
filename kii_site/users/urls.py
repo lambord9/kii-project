@@ -12,5 +12,6 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name = 'users/login.html'), name = 'login'),
     path('logout/', views.UserLogoutView.as_view(), name = 'logout'),
     path('profile/', views.profile, name = 'profile'),
+    path('profile/update', views.profile_update, name='profile_update'),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

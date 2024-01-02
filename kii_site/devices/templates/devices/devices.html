@@ -1,7 +1,9 @@
 {% extends 'main/base_template.html' %}
 {% load static %}
 {% load bootstrap5 %}
+{% load crispy_forms_tags %}
 {% block title %} {{ title }} {% endblock %}
+{% load users_extras %}
 
 {% block content %}
 <div class="container-fluid">
@@ -15,25 +17,21 @@
           <div class="col-md-3 mb-3 justify-content-center">
             <input class="form-control" id="myInput" type="text" placeholder="Очень быстрый фильтр">
           </div>
+          {% if request.user|has_group:"Read/Write" %}
           <div class="col-md-2 mb-2 justify-content-center">
             <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" >Добавить устройство</button>
           </div>
-
+          
                 <div class="collapse multi-collapse" id="multiCollapseExample1" >
-                  <div class="card card-body">
-                    <div class="input-group input-group-sm mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
-                      </div>
-                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                    </div>
-                    <p class="mb-1">тут 2 <strong>2</strong></p>
-                    <p class="mb-1">тут 3 <strong>3</a></strong></p>
-                    <p class="mb-1">тут 4 <strong>4</strong></p> 
+                  <div class="container-fluid">
+                    <form method="post" class="contact_form" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      {{ form|crispy }}
+                      <input type="submit" class="btn btn-success" value = "Сохранить">
+                  </form>
                   </div>
                 </div>
+            {% endif %}
             </div>
         <div class="table-responsive-xxl">
           <table class="table table-hover" id="myTable">

@@ -17,6 +17,17 @@
             {% csrf_token %}
             <div class="card-body">
                 {{ form|crispy }}
+                <div class="form-check">
+                <h5>Тип аккаунта</h5>
+                <div>
+                  <input class = "form-check-input" type="radio" id="Read/Write" name="account_type" value="Read/Write">
+                  <label class="form-check-label" for="Read/Write">Read/Write</label>
+                </div>
+                <div>
+                  <input class = "form-check-input" type="radio" id="Read" name="account_type" value="Read">
+                  <label class="form-check-label" for="Read">Read</label>
+                </div>
+              </div>
             </div>
             <small class="text-muted" style="margin: 0 auto; margin: 16px;">Уже есть аккаунт? <a class="ml-2" href="{% url 'login' %}">Войти</a></small>
             <div class="card-footer">

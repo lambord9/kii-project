@@ -6,11 +6,12 @@ class DeviceForm(ModelForm):
     class Meta:
         model = Device
         fields = ['dev_type', 'model', 'hostname', 'status', 'mgmt_inband_ip', 'mgmt_loopback_ip', 'domains']
-        widgets = {'dev_type': Select(),
-                   'model': Textarea(attrs={'cols':30, 'rows':1}),
-                   'hostname': Textarea(attrs={'cols':30, 'rows':1}),
-                   'status': Select(),
-                   'mgmt_inband_ip': Textarea(attrs={'cols':30, 'rows':1}),
-                   'mgmt_loopback_ip': Textarea(attrs={'cols':30, 'rows':1}),
-                   'domains': CheckboxSelectMultiple(),
+        widgets = {'dev_type': Select(attrs={'style':'max-width:25vh'}),
+                   'model': Textarea(attrs={'cols':5, 'rows':1, 'style':'max-width:25vh'}),
+                   'hostname': Textarea(attrs={'cols':5, 'rows':1, 'style':'max-width:25vh'}),
+                   'status': Select(attrs={'style':'max-width:25vh'}),
+                   'mgmt_inband_ip': Textarea(attrs={'cols':5, 'rows':1, 'style':'max-width:25vh'}),
+                   'mgmt_loopback_ip': Textarea(attrs={'cols':5, 'rows':1, 'style':'max-width:25vh'}),
+                   'domains': CheckboxSelectMultiple(attrs={'style':'max-width:25vh'}),
         }
+
